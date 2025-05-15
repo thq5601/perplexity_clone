@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perflexity/presentation/pages/home_page.dart';
+import 'package:perflexity/theme/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
       home: const HomePage(),
     );
   }
