@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:perflexity/presentation/widgets/side_bar_button.dart';
+import 'package:perflexity/presentation/widgets/side_bar/side_bar_button.dart';
 import 'package:perflexity/theme/colors.dart';
 
-class SideNavBar extends StatefulWidget {
-  const SideNavBar({super.key});
+class SideBarSection extends StatefulWidget {
+  const SideBarSection({super.key});
 
   @override
-  State<SideNavBar> createState() => _SideNavBarState();
+  State<SideBarSection> createState() => _SideBarSectionState();
 }
 
-class _SideNavBarState extends State<SideNavBar> {
+class _SideBarSectionState extends State<SideBarSection> {
   bool isCollapsed = true;
 
   @override
