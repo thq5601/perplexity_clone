@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:perflexity/presentation/widgets/side_bar_button.dart';
 import 'package:perflexity/theme/colors.dart';
 
 class SideNavBar extends StatefulWidget {
@@ -10,52 +11,57 @@ class SideNavBar extends StatefulWidget {
 
 class _SideNavBarState extends State<SideNavBar> {
   bool isCollapsed = true;
+
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      width: isCollapsed ? 64 : 128,
+      width: isCollapsed ? 64 : 148,
       color: AppColors.sideNav,
       child: Column(
         children: [
           const SizedBox(height: 16),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            child: Icon(
-              Icons.auto_awesome_mosaic,
-              color: AppColors.whiteColor,
-              size: 28,
+          Icon(
+            Icons.auto_awesome_mosaic,
+            color: AppColors.whiteColor,
+            size: isCollapsed ? 28 : 56,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment:
+                  isCollapsed
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
+              children: [
+                SideBarButton(
+                  isCollapsed: isCollapsed,
+                  icon: Icons.add,
+                  text: 'Home',
+                ),
+                SideBarButton(
+                  isCollapsed: isCollapsed,
+                  icon: Icons.search,
+                  text: 'Search',
+                ),
+                SideBarButton(
+                  isCollapsed: isCollapsed,
+                  icon: Icons.language,
+                  text: 'Spaces',
+                ),
+                SideBarButton(
+                  isCollapsed: isCollapsed,
+                  icon: Icons.auto_awesome,
+                  text: 'Discover',
+                ),
+                SideBarButton(
+                  isCollapsed: isCollapsed,
+                  icon: Icons.cloud_outlined,
+                  text: 'Library',
+                ),
+                const Spacer(),
+              ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            child: Icon(Icons.add, color: AppColors.iconGrey, size: 28),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            child: Icon(Icons.search, color: AppColors.iconGrey, size: 28),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            child: Icon(Icons.language, color: AppColors.iconGrey, size: 28),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            child: Icon(
-              Icons.auto_awesome,
-              color: AppColors.iconGrey,
-              size: 28,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            child: Icon(
-              Icons.cloud_outlined,
-              color: AppColors.iconGrey,
-              size: 28,
-            ),
-          ),
-          const Spacer(),
           GestureDetector(
             onTap: () {
               setState(() {
@@ -63,13 +69,15 @@ class _SideNavBarState extends State<SideNavBar> {
               });
             },
             child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 14),
-              child: Icon(
-                isCollapsed
-                    ? Icons.keyboard_arrow_right
-                    : Icons.keyboard_arrow_left,
-                color: AppColors.iconGrey,
-                size: 28,
+              margin: const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+              child: AnimatedRotation(
+                turns: isCollapsed ? 0.0 : 0.5,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.keyboard_arrow_right,
+                  color: AppColors.iconGrey,
+                  size: 28,
+                ),
               ),
             ),
           ),
