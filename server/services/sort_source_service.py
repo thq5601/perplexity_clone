@@ -8,6 +8,7 @@ class SortSourceService:
         self.embedding_model = SentenceTransformer("all-miniLM-L6-v2")
 
     def sort_sources(self, query: str, search_results: List[dict]):
+        relevant_sources = []
         query_embedding = self.embedding_model.encode(query)
 
         for res in search_results:
@@ -18,6 +19,9 @@ class SortSourceService:
                     / (np.linalg.norm(query_embedding) * np.linalg.norm(res_embedding))
                 )
             
-            print(similarity)
+            res['relevance_score'] = similarity
+            
+            if similarity > 0.5:
+                relevant_sources.append(res)
 
-            #1.32
+        return sorted(relevant_sources, key=lambda x: x['relevance_score'], reverse=True)
