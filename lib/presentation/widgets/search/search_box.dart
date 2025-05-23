@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:perflexity/presentation/pages/chat_page.dart';
 import 'package:perflexity/presentation/widgets/search/search_bar_button.dart';
-import 'package:perflexity/presentation/widgets/search/search_button.dart';
+import 'package:perflexity/services/chat_web_service.dart';
 import 'package:perflexity/theme/colors.dart';
 
-class SearchBox extends StatelessWidget {
+class SearchBox extends StatefulWidget {
   const SearchBox({super.key});
+
+  @override
+  State<SearchBox> createState() => _SearchBoxState();
+}
+
+class _SearchBoxState extends State<SearchBox> {
+  final queryController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    queryController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +34,7 @@ class SearchBox extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              controller: queryController,
               decoration: InputDecoration(
                 hintText: 'Ask me aything...',
                 hintStyle: const TextStyle(
@@ -46,7 +61,32 @@ class SearchBox extends StatelessWidget {
                   label: 'Attach',
                 ),
                 const Spacer(),
-                SearchButton(),
+
+                // Summit Button
+                GestureDetector(
+                  onTap: () {
+                    ChatWebService().chat(queryController.text.trim());
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder:
+                            (context) =>
+                                ChatPage(question: queryController.text.trim()),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: AppColors.submitButton,
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    child: const Icon(
+                      Icons.arrow_forward,
+                      color: AppColors.backgroundColor,
+                      size: 16,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

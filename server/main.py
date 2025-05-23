@@ -42,7 +42,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 })
 
     except:
-        print("Error occured")
+        print("Unexpected error occured")
         
     finally:
         await websocket.close()
