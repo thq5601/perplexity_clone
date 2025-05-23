@@ -73,11 +73,16 @@ Answer from Perplexity: pplx.ai/share
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Perflexity is a search engine that uses AI to answer questions.',
+          'AI still generate answer...',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         Skeletonizer(
           enabled: isLoading,
+          effect: ShimmerEffect(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            duration: Duration(seconds: 1),
+          ),
           child: Markdown(
             data: fullResponse,
             shrinkWrap: true,

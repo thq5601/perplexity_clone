@@ -54,6 +54,11 @@ class _SourcesSectionState extends State<SourcesSection> {
         ),
         const SizedBox(height: 16),
         Skeletonizer(
+          effect: ShimmerEffect(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            duration: Duration(seconds: 1),
+          ),
           enabled: isLoading,
           child: Wrap(
             spacing: 16,

@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:perflexity/presentation/widgets/answer/answer_section.dart';
 
 import 'package:perflexity/presentation/widgets/side_bar/side_bar_section.dart';
 import 'package:perflexity/presentation/widgets/source/sources_section.dart';
+import 'package:perflexity/theme/colors.dart';
 
 class ChatPage extends StatelessWidget {
   final String question;
@@ -15,8 +17,8 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          SideBarSection(),
-          const SizedBox(width: 100),
+          kIsWeb ? SideBarSection() : SizedBox(),
+          kIsWeb ? SizedBox(width: 100) : SizedBox(),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -42,7 +44,9 @@ class ChatPage extends StatelessWidget {
               ),
             ),
           ),
-          Placeholder(),
+          kIsWeb
+              ? Placeholder(strokeWidth: 0, color: AppColors.backgroundColor)
+              : SizedBox(),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:perflexity/presentation/widgets/footer/footer_section.dart';
 import 'package:perflexity/presentation/widgets/search/search_section.dart';
@@ -12,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   @override
   void initState() {
     super.initState();
@@ -25,14 +25,17 @@ class _HomePageState extends State<HomePage> {
       body: Row(
         children: [
           // Left Side Navigation Bar
-          const SideBarSection(),
+          kIsWeb ? SideBarSection() : SizedBox(),
           Expanded(
-            child: Column(
-              children: [
-                const Expanded(child: SearchSection()),
-                
-                const FooterSection(),
-              ],
+            child: Padding(
+              padding: !kIsWeb ? EdgeInsets.all(16.0) : EdgeInsets.zero,
+              child: Column(
+                children: [
+                  const Expanded(child: SearchSection()),
+
+                  const FooterSection(),
+                ],
+              ),
             ),
           ),
         ],
