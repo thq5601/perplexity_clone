@@ -1,16 +1,7 @@
 # perflexity
 
-A new Flutter project.
+A clone of Perplexity use well on website
 
-## Getting Started
+Creat .env file and paste in Tavily and Gemini API key to use 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Cmd: Run virtual environment --> fastapi dev main.py
