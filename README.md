@@ -1,7 +1,6 @@
 # perflexity
 
-A clone of Perplexity use well on website
+A clone of Perplexity that can use well on the website.
 
-Creat .env file and paste in Tavily and Gemini API key to use 
-
-Cmd: Run virtual environment --> fastapi dev main.py
+To use, clone the file then creat .env file then paste in Tavily and Gemini API key.
+Cmd: Run virtual environment --> fastapi dev main.py.
